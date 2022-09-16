@@ -3,14 +3,15 @@
 pragma solidity >= 0.8.1;
 
 contract Voting {
-    mapping(address => string) public  members;
+    mapping(address => string) public  membersProposal;
     mapping(address => bool) public membershipStatus; 
     address[] public activeMembers;
     address[] public passiveMembers;
 
-    string[] public proposalList;
-    string[] public proposalPassed;
-    string[] public proposalRejected;
+    string public mainProposal;
+    string[] internal proposalList;
+    string[] internal proposalPassed;
+    string[] internal proposalRejected;
 
     address public owner;
     constructor() {
@@ -29,8 +30,6 @@ contract Voting {
         for(uint i=0; i <activeMembers.length; i++) {
             if(activeMembers[i] == msg.sender) {
                 status = true;
-            } else {
-                status = false;
             }
         }
         require(status == true, "you are not a member");
@@ -40,6 +39,13 @@ contract Voting {
 
 
     function becomeMember() external payable {
+        bool status = false;
+        for(uint i=0; i<activeMembers.length; i++) {
+            if(activeMembers[i] == msg.sender) {
+                status = true;
+            }
+        }
+        require(status == false, "you are already a member");
         require(msg.value >= 1 ether, "pay the membership fee of 1 Matic");
         membershipStatus[msg.sender] = true;
         activeMembers.push(msg.sender);
@@ -61,10 +67,33 @@ contract Voting {
         require(_index < proposalList.length, "proposal id number is wrong");
         mainProposal = proposalList[_index];
         for(uint i = _index; i < proposalList.length-1; i++) {
-            proposalList[i] = proposalList[i+1] 
+            proposalList[i] = proposalList[i+1];
         }
         proposalList.pop();
     }
+    function getAllPro() external view returns(string[] memory) {
+        return proposalList;
+    }
+    function getAllProPassed() external view returns(string[] memory) {
+        return proposalPassed;
+    }
+    function getAllProRejected() external view returns(string[] memory) {
+        return proposalRejected;
+    }
+
+    /*
+    also save members and their proposals in mapping
+    also make sure members can make proposal once in a week
+    voting functions still missing
+
+
+    mapping(string => uint) public yesResults;
+    mapping(string => uint) public noResults;
+    or
+    uint[2] resultArray;
+    mapping(string => uint[2]) public yesResults;
+
+     */
 
 
 
