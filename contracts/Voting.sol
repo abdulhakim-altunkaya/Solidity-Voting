@@ -87,11 +87,25 @@ contract Voting {
     voting functions still missing
 
 
-    mapping(string => uint) public yesResults;
-    mapping(string => uint) public noResults;
-    or
-    uint[2] resultArray;
-    mapping(string => uint[2]) public yesResults;
+    string[] internal proposals;
+
+    function addProposal(string memory _proposal) external {
+        proposals.push(_proposal);
+    }
+
+    struct ResultStruct {
+        string proposalName;
+        uint yesVotes;
+        uint noVotes;
+    }
+    ResultStruct record;
+    mapping(uint => ResultStruct) public resultsMapping;
+    function createRecord(uint index, uint yesVotes, uint noVotes) external {
+        record = ResultStruct(proposals[index], yesVotes, noVotes);
+    }
+    function addResults(uint index) external {
+        resultsMapping[index] = record;
+    }
 
      */
 
