@@ -40,18 +40,31 @@ contract Voting {
 
 
     function becomeMember() external payable {
-        (bool success, ) = address(this).call{value: 1 ether}("");
-        require(success, "fee transfer failed");
+        require(msg.value >= 1 ether, "pay the membership fee of 1 Matic");
         membershipStatus[msg.sender] = true;
         activeMembers.push(msg.sender);
     }
 
-    
     function makeProposal(string memory _proposal) external onlyMember {
         proposalList.push(_proposal);
     }
 
-
+    /*Here the owner is choosing the main proposal from proposal list.
+    For this reason, there is no reason to keep it inside the proposal list.
+    Because it will later go inside passed or rejected list. 
+    Thats why I am using for loop in orderly way to remove main proposal.
+    We can start for loop from main proposal index and no need to iterate all list
+    because in any case we cannot copy the value of last element to another element.
+    Thats why i am finishing for loop at "proposalList.length-1
+    */
+    function chooseMainProposal(uint _index) external onlyOwner {
+        require(_index < proposalList.length, "proposal id number is wrong");
+        mainProposal = proposalList[_index];
+        for(uint i = _index; i < proposalList.length-1; i++) {
+            proposalList[i] = proposalList[i+1] 
+        }
+        proposalList.pop();
+    }
 
 
 
