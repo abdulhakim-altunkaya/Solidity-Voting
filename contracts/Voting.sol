@@ -85,30 +85,49 @@ contract Voting {
     also save members and their proposals in mapping
     also make sure members can make proposal once in a week
     voting functions still missing
+    reset yes and no notes uint after closing voting
+    */
 
-
-    string[] internal proposals;
-
-    function addProposal(string memory _proposal) external {
-        proposals.push(_proposal);
-    }
-
+    //voting result recording
     struct ResultStruct {
         string proposalName;
-        uint yesVotes;
-        uint noVotes;
+        uint yesV;
+        uint noV;
+        uint totalV;
     }
     ResultStruct record;
     mapping(uint => ResultStruct) public resultsMapping;
-    function createRecord(uint index, uint yesVotes, uint noVotes) external {
-        record = ResultStruct(proposals[index], yesVotes, noVotes);
-    }
-    function addResults(uint index) external {
-        resultsMapping[index] = record;
+
+
+    //y: yes votes, n: no votes
+    uint internal y;
+    uint internal n;
+    mapping(address => bool) public votingStatus;
+    function voteYes() external onlyMember {
+        require(votingStatus[msg.sender] == false, "you have already voted");
+        votingStatus[msg.sender] = true;
+        y++;
     }
 
-     */
-
+    function voteNo() external onlyMember {
+        require(votingStatus[msg.sender] == false, "you have already voted");
+        votingStatus[msg.sender] = true;
+        n++;
+    }
+    function closeVoting(uint indexMapping) external onlyOwner {
+        uint totalVotes = y + n;
+        uint percentage1 = y*100;
+        uint percentage2 = percentage1/totalVotes;
+        if(percentage2 >= 60) {
+            proposalPassed.push(mainProposal);
+        } else {
+            proposalRejected.push(mainProposal);
+        }
+        record = ResultStruct(mainProposal, y, n, totalVotes);
+        resultsMapping[indexMapping] = record;
+        n=0;
+        y=0;
+    }
 
 
 }
