@@ -4,7 +4,6 @@ pragma solidity >= 0.8.1;
 
 contract Voting {
     mapping(address => string) public  membersProposal;
-    mapping(address => bool) public membershipStatus; 
     address[] public activeMembers;
     address[] public passiveMembers;
 
@@ -47,7 +46,6 @@ contract Voting {
         }
         require(status == false, "you are already a member");
         require(msg.value >= 1 ether, "pay the membership fee of 1 Matic");
-        membershipStatus[msg.sender] = true;
         activeMembers.push(msg.sender);
     }
 
@@ -56,13 +54,14 @@ contract Voting {
     }
 
     /*Here the owner is choosing the main proposal from proposal list.
-    For this reason, there is no reason to keep it inside the proposal list.
+    And there is no reason to keep main proposal inside the proposal list.
     Because it will later go inside passed or rejected list. 
     Thats why I am using for loop in orderly way to remove main proposal.
     We can start for loop from main proposal index and no need to iterate all list
     because in any case we cannot copy the value of last element to another element.
     Thats why i am finishing for loop at "proposalList.length-1
     */
+    uint public votingStartTime;
     function chooseMainProposal(uint _index) external onlyOwner {
         require(_index < proposalList.length, "proposal id number is wrong");
         mainProposal = proposalList[_index];
@@ -70,6 +69,7 @@ contract Voting {
             proposalList[i] = proposalList[i+1];
         }
         proposalList.pop();
+        votingStartTime = block.timestamp;
     }
     function getAllPro() external view returns(string[] memory) {
         return proposalList;
@@ -84,11 +84,10 @@ contract Voting {
     /*
     also save members and their proposals in mapping
     also make sure members can make proposal once in a week
-    voting functions still missing
-    reset yes and no notes uint after closing voting
+    each voting time is limited
     */
 
-    //voting result recording
+    //this struct is to save voting results in resultsMapping after closing the voting.
     struct ResultStruct {
         string proposalName;
         uint yesV;
@@ -105,15 +104,19 @@ contract Voting {
     mapping(address => bool) public votingStatus;
     function voteYes() external onlyMember {
         require(votingStatus[msg.sender] == false, "you have already voted");
+        require(block.timestamp < votingStartTime + 20 minutes, "voting period has ended");
         votingStatus[msg.sender] = true;
         y++;
     }
 
     function voteNo() external onlyMember {
         require(votingStatus[msg.sender] == false, "you have already voted");
+        require(block.timestamp < votingStartTime + 20 minutes, "voting period has ended");
         votingStatus[msg.sender] = true;
         n++;
     }
+
+    //no need to reset votingStartTime here.
     function closeVoting(uint indexMapping) external onlyOwner {
         uint totalVotes = y + n;
         uint percentage1 = y*100;
@@ -127,6 +130,22 @@ contract Voting {
         resultsMapping[indexMapping] = record;
         n=0;
         y=0;
+    }
+
+    //leaving membership. First I am searching for member index in activeMembers array.
+    //Then I am removing the msg.sender in an orderly way.
+    function leaveMembership() external onlyMember {
+        uint memberIndex;
+        for(uint i=0; i<activeMembers.length; i++) {
+            if(activeMembers[i] == msg.sender) {
+                memberIndex = i;
+                break;
+            }
+        }
+        for(uint i = memberIndex; i < activeMembers.length -1; i++) {
+            activeMembers[i] = activeMembers[i+1];
+        }
+        activeMembers.pop();
     }
 
 
