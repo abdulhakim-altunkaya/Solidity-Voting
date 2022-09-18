@@ -6,7 +6,6 @@ contract Voting {
     mapping(address => string) public  membersProposal;
     mapping(address => bool) public membershipStatus;
     address[] public activeMembers;
-    address[] public previousMembers;
 
     string public mainProposal;
     string[] internal proposalList;
@@ -155,5 +154,21 @@ contract Voting {
     function withdraw() external onlyOwner {
         (bool success, ) = owner.call{value: address(this).balance}("");
         require(success, "you are not owner");
+    }
+
+    //owner can remove a member to prevent exploitation
+    function removeMember(address _member) external onlyOwner {
+        uint memberIndex;
+        for(uint i=0; i<activeMembers.length; i++) {
+            if(activeMembers[i] == _member) {
+                memberIndex = i;
+                break;
+            }
+        }
+        for(uint i = memberIndex; i < activeMembers.length -1; i++) {
+            activeMembers[i] = activeMembers[i+1];
+        }
+        activeMembers.pop();
+        membershipStatus[_member] = false;
     }
 }
