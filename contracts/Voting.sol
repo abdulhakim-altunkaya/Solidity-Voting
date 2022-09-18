@@ -4,8 +4,9 @@ pragma solidity >= 0.8.1;
 
 contract Voting {
     mapping(address => string) public  membersProposal;
+    mapping(address => bool) public membershipStatus;
     address[] public activeMembers;
-    address[] public passiveMembers;
+    address[] public previousMembers;
 
     string public mainProposal;
     string[] internal proposalList;
@@ -20,7 +21,7 @@ contract Voting {
         require(msg.sender == owner, "you are not owner");
         _;
     }
-    function changeOwner(address _newOwner) external onlyOwner {
+    function renounceOwnership(address _newOwner) external onlyOwner {
         owner = _newOwner;
     }
 
@@ -47,6 +48,7 @@ contract Voting {
         require(status == false, "you are already a member");
         require(msg.value >= 1 ether, "pay the membership fee of 1 Matic");
         activeMembers.push(msg.sender);
+        membershipStatus[msg.sender] = true;
     }
 
     function makeProposal(string memory _proposal) external onlyMember {
@@ -146,7 +148,12 @@ contract Voting {
             activeMembers[i] = activeMembers[i+1];
         }
         activeMembers.pop();
+        membershipStatus[msg.sender] = false;
     }
 
-
+    //owner can withdraw all the ether inside the contract
+    function withdraw() external onlyOwner {
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success, "you are not owner");
+    }
 }
