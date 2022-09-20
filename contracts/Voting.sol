@@ -12,7 +12,7 @@ contract Voting {
     string[] internal proposalPassed;
     string[] internal proposalRejected;
 
-    address public owner;
+    address internal owner;
     constructor() {
         owner = msg.sender;
     }
@@ -80,6 +80,12 @@ contract Voting {
     }
     function getAllProRejected() external view returns(string[] memory) {
         return proposalRejected;
+    }
+    function getBalance() external view returns(uint) {
+        return (address(this).balance);
+    }
+    function getDetails() external view returns(address, address) {
+        return(owner, address(this));
     }
 
     /*

@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 
 
 body {
   background-color: aquamarine;
-  font-family: 'DynaPuff', cursive;
+  font-family: 'PT Sans Narrow', sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -29,13 +30,13 @@ body {
   flex-basis: 80%;
   display: flex;
   flex-direction: row;
-  font-family: 'PT Sans Narrow', sans-serif;
   font-size: 25px;
 }
 
 #heading {
   align-self: center;
-  font-size: 40px;
+  font-size: 60px;
+  font-family: 'Bungee Spice', cursive;
 }
 
 #footnotePart {
