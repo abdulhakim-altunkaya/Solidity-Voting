@@ -1,18 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from  "react-router-dom";
-import ReadArea from './ReadArea';
+import { BrowserRouter as Router, Route, Routes } from  "react-router-dom";
+import ReadAreaDetails from './ReadAreaDetails';
 import GetRejectedProposals from './GetRejectedProposals';
 import GetPassedProposals from "./GetPassedProposals";
 
 function ReadAreaMain() {
   return (
-    <div>
+    <div  className='ReadArea'>
         <Router>
-            <Switch>
-            <Route exact path="/"><ReadArea /></Route>
-            <Route exact path="/rejected"><GetRejectedProposals /></Route>
-            <Route exact path="/passed"><GetPassedProposals /></Route>
-            </Switch>
+            <Routes>
+              <Route path="/" element={<ReadAreaDetails />}/>
+              <Route path="/rejected" element={<GetRejectedProposals />}/>
+              <Route path="/passed" element={<GetPassedProposals />}/>
+            </Routes>
         </Router>
     </div>
   )
