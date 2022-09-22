@@ -1,9 +1,26 @@
 import React from 'react'
+
+function ReadAreaRejected() {
+  return (
+    <div>
+
+
+
+    </div>
+  )
+}
+
+export default ReadAreaRejected;
+
+
+
+import React from 'react'
 import { useState } from 'react';
 import GetBalance from "./GetBalance.js";
 import GetContractDetails from "./GetContractDetails.js";
-import GetButtonRejected from './GetButtonRejected.js';
-import GetButtonPassed from "./GetButtonPassed.js";
+import GetPassedProposals from "./GetPassedProposals.js";
+import GetRejectedProposals from './GetRejectedProposals.js';
+import { BrowserRouter as Router, Route, Switch } from  "react-router-dom";
 
 
 function ReadArea() {
@@ -24,8 +41,11 @@ function ReadArea() {
             <button className='button-56' onClick={connectMetamask}> Connect to Metamask </button>
             <p>Your Account is: {account}</p>
             <GetBalance/>
-            <GetButtonPassed />            
-            <GetButtonRejected />
+            <GetContractDetails />
+
+
+            
+            <GetPassedProposals />
             
         </div>
         <div id='footnotePart'>

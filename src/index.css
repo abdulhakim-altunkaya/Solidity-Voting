@@ -38,11 +38,12 @@ body {
   font-size: 60px;
   font-family: 'Bungee Spice', cursive;
 }
-
+/*
 #footnotePart {
   position:absolute;
   bottom:0;
 }
+*/
 
 .ReadArea, .WriteArea {
   flex-basis: 50%;

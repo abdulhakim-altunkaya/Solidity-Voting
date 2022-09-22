@@ -1,11 +1,12 @@
 import React from 'react'
-import ReadArea from "./ReadArea.js";
+
 import WriteArea from "./WriteArea.js";
+import ReadAreaMain from './ReadAreaMain.js';
 
 function Lowerbar() {
   return (
     <div id='lowerbar'>
-      <ReadArea />
+      <ReadAreaMain />
       <WriteArea />
     </div>
   )

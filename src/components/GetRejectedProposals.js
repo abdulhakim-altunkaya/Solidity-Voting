@@ -4,16 +4,20 @@ import { ABI } from "./ContractABI.js";
 import { ethers } from "ethers";
 
 function GetRejectedProposals() {
-    let[rejectedProposals, setRejectedProposals] = useState("");
+    const arr = ["apple", "orange", "grapes", "berry"];
 
-    const getRejectedProposals = async () => {
-        return;
+    const rejectedProposals = (arr) => {
+        return arr.map((words, index) => <li key={index}>{words}</li>);
     }
+
+
 
     return (
     <div>
-        <button className='button-56' onClick={getRejectedProposals}>See Rejected Proposals</button>
-        <p>Rejected Proposals: {rejectedProposals}</p>
+        <button className='button-56'>See Rejected Proposals </button>
+        <p>Rejected Proposals: </p>
+        <ul>{rejectedProposals(arr)}</ul> 
+
     </div>
     )
 }
