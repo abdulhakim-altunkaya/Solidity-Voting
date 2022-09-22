@@ -25,7 +25,9 @@ function ReadAreaDetails() {
       <p>Your Account is: {account}</p>
       <GetBalance/>
       <GetContractDetails/>
-      <button onClick={() => navigate('/rejected')}>Click me!</button>
+      <button className='button-56' onClick={() => navigate('/passed')}>GET PASSED PROPOSALS</button>
+      <br />
+      <button className='button-56' onClick={() => navigate('/rejected')}>GET REJECTED PROPOSALS</button>
     </div>
   )
 }

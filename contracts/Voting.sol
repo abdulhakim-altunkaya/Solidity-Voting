@@ -137,6 +137,7 @@ contract Voting {
         resultsMapping[indexMapping] = record;
         n=0;
         y=0;
+        mainProposal = "";
     }
 
     //leaving membership. First I am searching for member index in activeMembers array.
@@ -177,4 +178,10 @@ contract Voting {
         activeMembers.pop();
         membershipStatus[_member] = false;
     }
+
+    /*
+    limit making proposal for each member to one per day
+    catch error messages and display them
+    also event messages
+    */
 }
