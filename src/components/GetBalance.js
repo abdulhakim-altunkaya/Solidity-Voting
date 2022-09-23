@@ -24,7 +24,9 @@ function GetBalance() {
   const getBalance = async () => {
     connectContract();
     const txResponse = await contract.getBalance();
-    setVotingBalance(`${txResponse} Matic`);
+    let data = txResponse.toString();
+    let data2 = data.slice(0, -18);
+    setVotingBalance(`${data2} Matic`);
   }
   return (
     <div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import WAMainProposal from './WAMainProposal';
 import WABecomeMember from "./WABecomeMember";
+import WAMakeProposal from './WAMakeProposal';
 
 
 function WriteArea() {
@@ -8,6 +9,7 @@ function WriteArea() {
     <div className='WriteArea'>
       <WAMainProposal/>
       <WABecomeMember />
+      <WAMakeProposal/>
     </div>
   )
 }

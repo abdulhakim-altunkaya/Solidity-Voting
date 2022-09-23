@@ -3,6 +3,8 @@ import GetBalance from './GetBalance';
 import { useState } from 'react';
 import GetContractDetails from './GetContractDetails';
 import { useNavigate } from 'react-router-dom';
+import CheckMembership from "./CheckMembership";
+
 
 function ReadAreaDetails() {
   const {ethereum} = window;
@@ -23,8 +25,9 @@ function ReadAreaDetails() {
     <div>
       <button className='button-56' onClick={connectMetamask}> Connect to Metamask </button>
       <p>Your Account is: {account}</p>
-      <GetBalance/>
-      <GetContractDetails/>
+      <GetBalance />
+      <GetContractDetails />
+      <CheckMembership account={account} />
       <button className='button-56' onClick={() => navigate("/proposals")}>SEE WAITING PROPOSALS</button>
       <br />
       <button className='button-56' onClick={() => navigate('/passed')}>SEE PASSED PROPOSALS</button>

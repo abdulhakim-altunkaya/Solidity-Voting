@@ -1,10 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { ethers } from "ethers";
+import {CONTRACT_ADDRESS} from "./ContractAddress";
+import {ABI} from "./ContractABI";
 
 function ReadAreaWaiting() {
     const navigate = useNavigate();
     let[waitingProposals, setWaitingProposals] = useState("");
+
+    let contract;
+    let signer;
+    const CONTRACT_ABI = ABI;
+    const ADDRESS = CONTRACT_ADDRESS;
 
     return (
         <div>

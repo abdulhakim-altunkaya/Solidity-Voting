@@ -181,9 +181,14 @@ contract Voting {
 
     /*
     limit making proposal for each member to one per day
+    You can charge people for making proposals as well.
+    
     catch error messages and display them
     also event messages
-    "check if you are member" component and function
-    get proposals in read area
+
+    I can drill prop for account information on write area.
+    this account information I can use to check if visitor is owner or not.
+    If owner, then I will enable some buttons, if not I will disable.
+
     */
 }
