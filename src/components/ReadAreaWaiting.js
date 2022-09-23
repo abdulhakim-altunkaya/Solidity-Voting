@@ -22,19 +22,27 @@ function ReadAreaWaiting() {
         contract = new ethers.Contract(Address, ABI, signer);
     }
 
-    const waitingPro = async () => {
+    let listProposals = [];
+    const getArray = async () => {
         connectContract();
         const txResponse = await contract.getAllPro();
-        console.log(txResponse);
+        listProposals = txResponse;
     }
-    
+    let[content, setContent] = useState("");
+    const displayArray = async () => {
+        await getArray();
+        setContent(listProposals.map(proposal => <span key={proposal}> <span>{proposal}</span> </span>));
+    }
+
 
 
 
     return (
         <div>
             <h3>Waiting Proposals:</h3>
-            <button onClick={waitingPro} className="button-56" >Some data</button>
+            <button onClick={displayArray} className="button-56" >display array</button>
+            <br />
+            <ul>{content}</ul>
             <br />
             <button className="button-56" onClick={ () => navigate("/")}>Homepage</button>
         </div>
