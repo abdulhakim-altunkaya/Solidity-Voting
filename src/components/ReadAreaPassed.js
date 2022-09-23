@@ -10,14 +10,11 @@ function ReadAreaPassed() {
 
     let[passedProposals, setPassedProposals] = useState("");
 
-    const getPassedProposals = async () => {
-        return;
-    }
 
     return (
     <div>
-        <button className='button-56' onClick={getPassedProposals}>See Passed Proposals</button>
-        <p>Passed Proposals: {passedProposals}</p>
+        <h4>Passed Proposals:</h4>
+        <p>{passedProposals}</p>
         <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
     </div>
     )

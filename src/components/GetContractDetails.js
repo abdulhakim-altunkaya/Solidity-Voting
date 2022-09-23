@@ -1,5 +1,6 @@
 import React from 'react';
 import { ABI } from "./ContractABI.js";
+import { CONTRACT_ADDRESS } from "./ContractAddress";
 import { useState } from 'react';
 import { ethers } from "ethers";
 
@@ -9,9 +10,10 @@ function GetContractDetails() {
   let contract;
   let signer;
   const CONTRACT_ABI = ABI;
+  const ADDRESS = CONTRACT_ADDRESS;
 
   const connectContract = async () => {
-    const Address = "0xb5dd0dFEEC4C94eA3f9573018aB009DEb497Ba28";
+    const Address = ADDRESS;
     const ABI = CONTRACT_ABI;
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     signer = provider.getSigner();

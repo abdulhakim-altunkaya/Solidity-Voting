@@ -183,5 +183,7 @@ contract Voting {
     limit making proposal for each member to one per day
     catch error messages and display them
     also event messages
+    "check if you are member" component and function
+    get proposals in read area
     */
 }

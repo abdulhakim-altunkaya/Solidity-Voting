@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 
 body {
@@ -58,10 +59,10 @@ body {
 /* INPUT */
 input {
   min-height: 40px;
-  font-size: 33px;
-  min-width: 60px;
+  font-size: 22px;
+  min-width: 40%;
   outline: none;
-  font-family: 'Rubik Dirt', cursive;
+  font-family: 'Courgette', cursive;
   border-radius: 4px;
 }
 
@@ -136,3 +137,5 @@ input {
 #redButton {
   background-color: #dc143c;
 }
+
+

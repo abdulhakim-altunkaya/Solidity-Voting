@@ -18,8 +18,7 @@ function ReadAreaRejected() {
 
     return (
     <div>
-        <button className='button-56'>See Rejected Proposals </button>
-        <p>Rejected Proposals: </p>
+        <h4>Rejected Proposals: </h4>
         <ul>{rejectedProposals(arr)}</ul> 
         <br />
         <button className='button-56' onClick={ () => navigate("/")}>Homepage</button>
