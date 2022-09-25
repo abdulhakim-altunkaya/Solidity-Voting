@@ -25,7 +25,7 @@ function WAChooseMain() {
         connectContract();
         const txArray = await contract.getAllPro();
         if(inputValue === ""  || inputValue >= txArray.length ) {
-            alert( `Do not leave input empty: 0 <= index <${txArray.length}`);
+            alert( `Input number must be between: 0 <= number <${txArray.length}`);
         }  else {
             await contract.chooseMainProposal(inputValue);
             setMessage("Success, main proposal choosen. You can now see it by clicking on See Main Proposal Button")

@@ -115,12 +115,14 @@ contract Voting {
         votingStatus[msg.sender] = true;
         y++;
     }
-
     function voteNo() external onlyMember {
         require(votingStatus[msg.sender] == false, "you have already voted");
         require(block.timestamp < votingStartTime + 20 minutes, "voting period has ended");
         votingStatus[msg.sender] = true;
         n++;
+    }
+    function getVotingStatus() external view returns(bool) {
+        return votingStatus[msg.sender];
     }
 
     //no need to reset votingStartTime here.
@@ -191,5 +193,15 @@ contract Voting {
     If owner, then I will enable some buttons, if not I will disable.
 
     You can add a lot of if statements and error alerts for better visitor interaction.
+
+    change background colors of function blocks in write area for better visuality
+
+    BECOME MEMBER button, add an alert saying "you are already member" if msg.sender is member
+    Probabably, for this, youll need to prop account information 
+
+    Also add main proposal info to the voting component
+
+    display proposal comp does not list down proposal. use map to fix it.
+
     */
 }
