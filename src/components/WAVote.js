@@ -30,11 +30,13 @@ function WAVote() {
     //cast your vote
     const votingYes = async () => {
         connectContract();
+        await contract.voteYes();
         console.log(contract.address);
     }
     const votingNo = async () => {
         connectContract();
         const txResponse = await contract.mainProposal();
+        await contract.voteNo();
         setProposal(txResponse);
     }
 

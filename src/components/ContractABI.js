@@ -128,6 +128,19 @@ export const ABI = [
   },
   {
     "inputs": [],
+    "name": "getVotingStatus",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "leaveMembership",
     "outputs": [],
     "stateMutability": "nonpayable",

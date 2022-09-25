@@ -203,5 +203,6 @@ contract Voting {
 
     display proposal comp does not list down proposal. use map to fix it.
 
+    check index number in closeVoting component
     */
 }
