@@ -134,7 +134,7 @@ input {
   }
 }
 
-#redButton {
+.redButton {
   background-color: #dc143c;
 }
 

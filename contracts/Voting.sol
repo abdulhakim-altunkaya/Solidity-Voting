@@ -190,5 +190,6 @@ contract Voting {
     this account information I can use to check if visitor is owner or not.
     If owner, then I will enable some buttons, if not I will disable.
 
+    You can add a lot of if statements and error alerts for better visitor interaction.
     */
 }

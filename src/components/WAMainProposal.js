@@ -5,7 +5,7 @@ import { CONTRACT_ADDRESS } from './ContractAddress.js';
 import {ethers } from "ethers";
 
 function WAMainProposal() {
-    let[mainProposal, setMainProposal] = useState("");
+    let[mainProposalText, setMainProposalText] = useState("");
 
     let contract;
     let signer;
@@ -16,19 +16,19 @@ function WAMainProposal() {
         const ABI = CONTRACT_ABI;
         const Address = ADDRESS;
         const provider = new ethers.providers.Web3Provider(window.ethereum);
-        signer = provider.getSigner;
-        contract = new ethers.Contract(ABI, Address, signer);
+        signer = provider.getSigner();
+        contract = new ethers.Contract(Address, ABI, signer);
     }
 
     const getMainProposal = async () => {
         connectContract();
         const txResponse = await contract.mainProposal();
-        setMainProposal(txResponse);
+        setMainProposalText(txResponse);
     }
   return (
     <div>
         <button className='button-56' onClick={getMainProposal}>See Main Proposal</button>
-        <p>Main Proposal is: {mainProposal}</p>
+        <p>Main Proposal is: {mainProposalText}</p>
     </div>
   )
 }
