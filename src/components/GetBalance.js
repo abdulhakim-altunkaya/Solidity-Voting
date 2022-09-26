@@ -24,9 +24,14 @@ function GetBalance() {
   const getBalance = async () => {
     connectContract();
     const txResponse = await contract.getBalance();
-    let data = txResponse.toString();
-    let data2 = data.slice(0, -18);
-    setVotingBalance(`${data2} Matic`);
+    if(txResponse < 1) {
+      setVotingBalance("there is money yet");
+    } else {
+      let data = txResponse.toString();
+      let data2 = data.slice(0, -18);
+      setVotingBalance(`${data2} Matic`);
+    }
+
   }
   return (
     <div>

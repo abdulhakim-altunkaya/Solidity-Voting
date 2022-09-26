@@ -24,9 +24,13 @@ function WABecomeMember() {
 
   const becomeMember = async () => {
     connectContract();
-    let finalAmount = BigInt(inputValue*(10**18));
-    const txResponse = await contract.becomeMember({value: finalAmount});
-    await txResponse.wait();
+    if(inputValue < 1) {
+      alert("you need to pay membership fee. Pay at least 1 Matic. Type 1 in the input area");
+    } else {
+      let finalAmount = BigInt(inputValue*(10**18));
+      const txResponse = await contract.becomeMember({value: finalAmount});
+      await txResponse.wait();
+    }
   }
 
   return (

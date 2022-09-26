@@ -140,6 +140,9 @@ contract Voting {
         }
         record = ResultStruct(mainProposal, y, n, totalVotes);
         resultsMapping[indexMapping] = record;
+    }
+    //reset the table for next voting
+    function resetTable() external onlyOwner {
         n=0;
         y=0;
         mainProposal = "";

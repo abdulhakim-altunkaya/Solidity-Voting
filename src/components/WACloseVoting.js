@@ -19,11 +19,17 @@ function WACloseVoting() {
 
     const closeVotingSession = async () => {
         connectContract();
-        await contract.closeVoting(2);
+        await contract.closeVoting(1);
+    }
+
+    const resetEverything = async () => {
+        connectContract();
+        await contract.resetTable();
     }
   return (
     <div>
         <button className='button-56 redButton' onClick={closeVotingSession}> CLOSE VOTING (only Owner can click)</button>
+        <button className='button-56 redButton' onClick={resetEverything}> RESET TABLE FOR NEXT VOTING (only Owner can click)</button>
     </div>
   )
 }
