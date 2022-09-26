@@ -31,7 +31,7 @@ function ReadAreaWaiting() {
     let[content, setContent] = useState("");
     const displayArray = async () => {
         await getArray();
-        setContent(listProposals.map(proposal => <span key={proposal}> <span>{proposal}</span> </span>));
+        setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
     }
 
 
@@ -39,10 +39,9 @@ function ReadAreaWaiting() {
 
     return (
         <div>
-            <h3>Waiting Proposals:</h3>
-            <button onClick={displayArray} className="button-56" >display array</button>
+            <button onClick={displayArray} className="button-56" >See Waiting Proposals</button>
             <br />
-            <ul>{content}</ul>
+            <div>{content}</div>
             <br />
             <button className="button-56" onClick={ () => navigate("/")}>Homepage</button>
         </div>
