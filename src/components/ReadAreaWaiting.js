@@ -41,7 +41,7 @@ function ReadAreaWaiting() {
         <div>
             <button onClick={displayArray} className="button-56" >See Waiting Proposals</button>
             <br />
-            <div>{content}</div>
+            <div><strong>Waiting Proposals: </strong>{content}</div>
             <br />
             <button className="button-56" onClick={ () => navigate("/")}>Homepage</button>
         </div>

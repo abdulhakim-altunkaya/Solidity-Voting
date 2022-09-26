@@ -9,8 +9,7 @@ function WAVote() {
     const navigate = useNavigate();
 
 
-    //get main proposal for display purposes
-    let[proposal, setProposal] = useState("");
+
     
     //connect to contract block
     let contract;
@@ -25,25 +24,29 @@ function WAVote() {
         contract = new ethers.Contract(Address, ABI, signer);
     }
 
+    //Get main proposal
+    let[proposal, setProposal] = useState("");
+    const getMain = async () => {
+        const txResponse = await contract.mainProposal();
+        setProposal(txResponse);
+    }
 
 
     //cast your vote
     const votingYes = async () => {
         connectContract();
         await contract.voteYes();
-        console.log(contract.address);
     }
     const votingNo = async () => {
         connectContract();
-        const txResponse = await contract.mainProposal();
         await contract.voteNo();
-        setProposal(txResponse);
     }
 
 
 
   return (
     <div>
+        <button className='button-56' onClick={getMain}>See Main Proposal</button>
         <p>Main Proposal: {proposal}</p>
         <button className='button-56' onClick={votingYes}>Yes</button>
         <button className='button-56' onClick={votingNo}>No</button>

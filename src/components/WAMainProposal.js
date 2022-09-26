@@ -23,7 +23,11 @@ function WAMainProposal() {
     const getMainProposal = async () => {
         connectContract();
         const txResponse = await contract.mainProposal();
-        setMainProposalText(txResponse);
+        if(txResponse === "") {
+          setMainProposalText("There is no proposal yet");
+        } else{
+          setMainProposalText(txResponse);
+        }
     }
   return (
     <div>

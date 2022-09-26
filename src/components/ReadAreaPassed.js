@@ -34,7 +34,11 @@ function ReadAreaPassed() {
     let[content, setContent] = useState("");
     const displayProposals = async () => {
         getProposals();
-        setContent(listItems.map( word =>  <p key={word}> {word}</p> ) )
+        if(listItems.length < 1) {
+            setContent("No proposal has passed yet")
+        } else {
+            setContent(listItems.map( word =>  <p key={word}> {word}</p> ) )
+        }
     }
 
 
@@ -42,8 +46,7 @@ function ReadAreaPassed() {
     return (
     <div>
         <button className='button-56' onClick={displayProposals}>See Passed Proposals</button>
-        
-        <div style={{paddingTop:"20px", paddingBottom: "20px"}}>Passed Proposals are: {content}</div>
+        <div style={{paddingTop:"20px", paddingBottom: "20px"}}><strong>Passed Proposals: </strong> {content}</div>
         <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
     </div>
     )

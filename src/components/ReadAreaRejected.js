@@ -31,14 +31,19 @@ function ReadAreaRejected() {
     let[content, setContent] = useState("");
     const displayArray = async () => {
         await getArray();
-        setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
+        if(listProposals.length < 1) {
+            setContent("No proposal has been rejected yet")
+        } else {
+            setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
+        }
+        
     }
 
     return (
     <div>
         <button className='button-56' onClick={displayArray}>See Rejected Proposals</button>
         <br />
-        <div>{content}</div>
+        <div> <strong>Rejected Proposals: </strong>{content}</div>
         <br />
         <button className='button-56' onClick={ () => navigate("/")}>Homepage</button>
 
