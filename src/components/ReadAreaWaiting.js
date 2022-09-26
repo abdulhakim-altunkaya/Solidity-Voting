@@ -31,7 +31,11 @@ function ReadAreaWaiting() {
     let[content, setContent] = useState("");
     const displayArray = async () => {
         await getArray();
-        setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
+        if(listProposals.length < 1) {
+            setContent("No proposal has been submitted")
+        } else {
+            setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
+        }
     }
 
 

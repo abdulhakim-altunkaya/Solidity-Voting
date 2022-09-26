@@ -109,16 +109,19 @@ contract Voting {
     uint internal y;
     uint internal n;
     mapping(address => bool) public votingStatus;
+    address[] internal voters;
     function voteYes() external onlyMember {
         require(votingStatus[msg.sender] == false, "you have already voted");
         require(block.timestamp < votingStartTime + 20 minutes, "voting period has ended");
         votingStatus[msg.sender] = true;
+        voters.push(msg.sender);
         y++;
     }
     function voteNo() external onlyMember {
         require(votingStatus[msg.sender] == false, "you have already voted");
         require(block.timestamp < votingStartTime + 20 minutes, "voting period has ended");
         votingStatus[msg.sender] = true;
+        voters.push(msg.sender);
         n++;
     }
     function getVotingStatus() external view returns(bool) {
@@ -140,6 +143,10 @@ contract Voting {
         n=0;
         y=0;
         mainProposal = "";
+        for(uint i=0; i <voters.length; i++) {
+            votingStatus[voters[i]] = false;
+        }
+        delete voters;
     }
 
     //leaving membership. First I am searching for member index in activeMembers array.

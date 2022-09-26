@@ -16,11 +16,10 @@ function WACloseVoting() {
         signer = provider.getSigner();
         contract = new ethers.Contract(Address, ABI, signer);
     }
-    let indexNumber = 1
+
     const closeVotingSession = async () => {
         connectContract();
-        await contract.closeVoting(indexNumber);
-        indexNumber++;
+        await contract.closeVoting(2);
     }
   return (
     <div>

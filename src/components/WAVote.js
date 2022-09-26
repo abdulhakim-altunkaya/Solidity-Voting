@@ -27,6 +27,7 @@ function WAVote() {
     //Get main proposal
     let[proposal, setProposal] = useState("");
     const getMain = async () => {
+        connectContract();
         const txResponse = await contract.mainProposal();
         setProposal(txResponse);
     }
