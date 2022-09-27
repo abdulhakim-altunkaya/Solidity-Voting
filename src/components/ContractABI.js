@@ -1,4 +1,4 @@
-export const ABI = [
+export const ABI =  [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -232,6 +232,13 @@ export const ABI = [
       }
     ],
     "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "resetTable",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

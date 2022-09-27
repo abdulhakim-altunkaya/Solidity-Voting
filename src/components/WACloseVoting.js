@@ -19,12 +19,14 @@ function WACloseVoting() {
 
     const closeVotingSession = async () => {
         connectContract();
-        await contract.closeVoting(1);
+        const txResponse = await contract.closeVoting(1);
+        await txResponse.wait();
     }
 
     const resetEverything = async () => {
         connectContract();
-        await contract.resetTable();
+        const txResponse = await contract.resetTable();
+        await txResponse.wait();
     }
   return (
     <div>

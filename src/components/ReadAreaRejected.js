@@ -32,22 +32,21 @@ function ReadAreaRejected() {
     const displayArray = async () => {
         await getArray();
         if(listProposals.length < 1) {
-            setContent("No proposal has been rejected yet")
+            setContent("No proposal has been submitted")
         } else {
             setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
         }
-        
     }
 
     return (
-    <div>
-        <button className='button-56' onClick={displayArray}>See Rejected Proposals</button>
-        <br />
-        <div> <strong>Rejected Proposals: </strong>{content}</div>
-        <br />
-        <button className='button-56' onClick={ () => navigate("/")}>Homepage</button>
+        <div>
+            <button className='button-56' onClick={displayArray}>See Rejected Proposals</button>
+            <br />
+            <div> <strong>Rejected Proposals: </strong>{content}</div>
+            <br />
+            <button className='button-56' onClick={ () => navigate("/")}>Homepage</button>
 
-    </div>
+        </div>
     )
 }
 

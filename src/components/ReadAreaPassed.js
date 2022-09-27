@@ -22,30 +22,28 @@ function ReadAreaPassed() {
 
     const navigate = useNavigate();
 
-    //GET  ARRAY
-    
-    let listItems = [];
-    const getProposals = async () => {
+    let listProposals = [];
+    const getArray = async () => {
         connectContract();
         const txResponse = await contract.getAllProPassed();
-        listItems = txResponse;
+        listProposals = txResponse;
     }
-    // DISPLAY ARRAY
     let[content, setContent] = useState("");
-    const displayProposals = async () => {
-        getProposals();
-        if(listItems.length < 1) {
-            setContent("No proposal has passed yet")
+    const displayArray = async () => {
+        await getArray();
+        if(listProposals.length < 1) {
+            setContent("No proposal has been submitted")
         } else {
-            setContent(listItems.map( word =>  <p key={word}> {word}</p> ) )
+            setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
         }
     }
 
 
 
+
     return (
     <div>
-        <button className='button-56' onClick={displayProposals}>See Passed Proposals</button>
+        <button className='button-56' onClick={displayArray}>See Passed Proposals</button>
         <div style={{paddingTop:"20px", paddingBottom: "20px"}}><strong>Passed Proposals: </strong> {content}</div>
         <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
     </div>
