@@ -3,8 +3,10 @@ import {ethers} from "ethers";
 import {ABI} from "./ContractABI";
 import {CONTRACT_ADDRESS} from "./ContractAddress";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function WACloseVoting() {
+    const navigate = useNavigate();
     let contract;
     let signer;
     const CONTRACT_ABI = ABI;
@@ -28,12 +30,15 @@ function WACloseVoting() {
 
 
   return (
-    <div style={{backgroundColor:"lightsalmon", paddingLeft: "5px"}}>
+    <div>
+        <button className='button-56 redButton' onClick={closeVotingSession}> Close Voting (only Owner)</button>
         <br />
-        <button className='button-56 redButton' onClick={closeVotingSession}> CLOSE VOTING (only Owner can click)</button>
         <input type="number" value={inputValue} 
         onChange={e => setInputValue(e.target.value)} 
         placeholder="enter an id number for closing proposal" />
+        <br />
+        <br />
+        <button className='button-56' onClick={()=> navigate("/") }>Homepage</button>
     </div>
   )
 }

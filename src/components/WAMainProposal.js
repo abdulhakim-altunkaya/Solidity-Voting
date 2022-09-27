@@ -29,12 +29,12 @@ function WAMainProposal() {
           setMainProposalText(txResponse);
         }
     }
-  return (
-    <div>
-        <button className='button-56' onClick={getMainProposal}>See Main Proposal</button>
-        <p>Main Proposal is: {mainProposalText}</p>
-    </div>
-  )
+    return (
+      <div>
+          <button className='button-56' onClick={getMainProposal}>See Main Proposal</button>
+          <p>Main Proposal is: {mainProposalText}</p>
+      </div>
+    )
 }
 
 export default WAMainProposal

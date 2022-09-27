@@ -3,9 +3,12 @@ import { useState } from 'react';
 import { ABI } from "./ContractABI";
 import {CONTRACT_ADDRESS} from "./ContractAddress";
 import {ethers} from "ethers";
+import { useNavigate } from 'react-router-dom';
 
 function WAMakeProposal() {
-  
+  const navigate = useNavigate();
+
+
   let[inputValue, setInputValue] = useState("");
 
   let contract;
@@ -34,12 +37,14 @@ function WAMakeProposal() {
 
   return (
     <div>
-        <br />
         <button className='button-56' onClick={makeProposal}>Make a Proposal</button>
         <p>To make a proposal you must be a member.</p>
         <input type="text" value={inputValue} 
         onChange={e => setInputValue(e.target.value)}
         placeholder="write your proposal"/>
+        <br />
+        <br />
+        <button className='button-56' onClick={()=> navigate("/")}>Homepage</button>
     </div>
   )
 }

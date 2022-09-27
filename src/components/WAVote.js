@@ -10,7 +10,7 @@ function WAVote() {
 
 
 
-    
+
     //connect to contract block
     let contract;
     let signer;
@@ -58,18 +58,18 @@ function WAVote() {
         }
     }
 
-  return (
-    <div>
-        <button className='button-56' onClick={getMain}>See Main Proposal</button>
-        <p> <strong>Main Proposal:</strong> {proposal}</p>
+    return (
         <div>
-            <button className='buttonyellow' onClick={votingYes}>Yes</button>
-            <button className='buttonyellow' onClick={votingNo}>No</button>
+            <button className='button-56' onClick={getMain}>See Main Proposal</button>
+            <p> <strong>Main Proposal:</strong> {proposal}</p>
+            <div>
+                <button className='buttonyellow' onClick={votingYes}>Yes</button>
+                <button className='buttonyellow' onClick={votingNo}>No</button>
+            </div>
+            <br />
+            <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
         </div>
-        <br />
-        <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
-    </div>
-  )
+    )
 }
 
 export default WAVote

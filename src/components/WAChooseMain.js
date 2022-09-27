@@ -3,8 +3,10 @@ import { useState } from 'react'
 import { ethers } from "ethers";
 import { ABI } from "./ContractABI";
 import { CONTRACT_ADDRESS } from "./ContractAddress";
+import { useNavigate } from 'react-router-dom';
 
 function WAChooseMain() {
+    const navigate = useNavigate();
 
     let contract;
     let signer;
@@ -33,10 +35,12 @@ function WAChooseMain() {
     }
     return (
         <div>
-            <br />
-            <button className='button-56 redButton' onClick={chooseMain}>Choose Main Proposal (Only Owner)</button>
+            <button className='button-56 redButton' onClick={chooseMain}>Choose Proposal (Only Owner)</button>
             <p>{message}</p>
             <input type="number" value={inputValue} onChange={ e => setInputValue(e.target.value) } required />
+            <br />
+            <br />
+            <button className='button-56' onClick={ ()=> navigate("/")}>Homepage</button>
         </div>
     )
 }

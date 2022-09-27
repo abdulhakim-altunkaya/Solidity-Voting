@@ -3,9 +3,12 @@ import { ABI } from './ContractABI';
 import { CONTRACT_ADDRESS } from "./ContractAddress";
 import { ethers } from "ethers";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 /* global BigInt */
 
 function WABecomeMember() {
+  const navigate = useNavigate();
+
   let contract;
   const ADDRESS = CONTRACT_ADDRESS;
   const CONTRACT_ABI = ABI;
@@ -68,6 +71,9 @@ function WABecomeMember() {
             value = {inputValue}
             placeholder='enter Matic amount.(Minimum is 1)'
             onChange={e => setInputValue(e.target.value) }/>
+        <br />
+        <br />
+        <button className='button-56' onClick={()=> navigate("/")} >Homepage</button>
         
     </div>
   )
