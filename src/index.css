@@ -149,3 +149,8 @@ input {
 .buttonyellow:hover {
   background-color: yellow;
 }
+.blackButton { 
+  background-color: darkred;
+  color: white;
+  font-weight: bolder;
+}

@@ -192,26 +192,9 @@ contract Voting {
     }
 
     /*
-    limit making proposal for each member to one per day
-    You can charge people for making proposals as well.
     
     catch error messages and display them
     also event messages
-
-    I can drill prop for account information on write area.
-    this account information I can use to check if visitor is owner or not.
-    If owner, then I will enable some buttons, if not I will disable.
-
-    You can add a lot of if statements and error alerts for better visitor interaction.
-
-    change background colors of function blocks in write area for better visuality
-
-    BECOME MEMBER button, add an alert saying "you are already member" if msg.sender is member
-    Probabably, for this, youll need to prop account information 
-
-    Also add main proposal info to the voting component
-
-    display proposal comp does not list down proposal. use map to fix it.
 
     check index number in closeVoting component
     */

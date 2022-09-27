@@ -31,7 +31,7 @@ function WACloseVoting() {
 
   return (
     <div>
-        <button className='button-56 redButton' onClick={closeVotingSession}> Close Voting (only Owner)</button>
+        <button className='button-56' onClick={closeVotingSession}> Close Voting (only Owner)</button>
         <br />
         <input type="number" value={inputValue} 
         onChange={e => setInputValue(e.target.value)} 

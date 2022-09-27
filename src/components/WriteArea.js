@@ -6,7 +6,7 @@ import WABecomeMember from './WABecomeMember';
 import WAMakeProposal from './WAMakeProposal';
 import WAChooseMain from './WAChooseMain';
 import WACloseVoting from './WACloseVoting';
-
+import WARemove from './WARemove';
 
 function WriteArea() {
   return (
@@ -20,6 +20,7 @@ function WriteArea() {
               <Route path="/submit" element={ <WAMakeProposal /> }/>
               <Route path="/choose" element={ <WAChooseMain /> } />
               <Route path="/close" element={ <WACloseVoting /> } />
+              <Route path='/remove' element={ <WARemove /> } />
             </Routes>
         </Router>
     </div>

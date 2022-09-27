@@ -35,7 +35,7 @@ function WAChooseMain() {
     }
     return (
         <div>
-            <button className='button-56 redButton' onClick={chooseMain}>Choose Proposal (Only Owner)</button>
+            <button className='button-56' onClick={chooseMain}>Choose Proposal (Only Owner)</button>
             <p>{message}</p>
             <input type="number" value={inputValue} onChange={ e => setInputValue(e.target.value) } required />
             <br />
