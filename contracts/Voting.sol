@@ -104,7 +104,7 @@ contract Voting {
     ResultStruct record;
     mapping(uint => ResultStruct) public resultsMapping;
 
-
+ 
     //y: yes votes, n: no votes
     uint internal y;
     uint internal n;

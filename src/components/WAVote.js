@@ -58,18 +58,31 @@ function WAVote() {
         }
     }
 
-    return (
+    let[votingStatus, setVotingStatus] = useState("");
+    const getStatus = async () => {
+        await connectContract();
+        const txResponse = await contract.getVotingStatus();
+        if(txResponse === true) {
+            setVotingStatus("Yes, you have already voted")
+        } else {
+            setVotingStatus("No, you have not voted yet");
+        }
+    }
+
+  return (
+    <div>
+        <button className='button-56' onClick={getStatus}>See if you voted</button>
+        <p><strong>Voting Status:</strong> {votingStatus}</p>
+        <button className='button-56' onClick={getMain}>See Main Proposal</button>
+        <p> <strong>Main Proposal:</strong> {proposal}</p>
         <div>
-            <button className='button-56' onClick={getMain}>See Main Proposal</button>
-            <p> <strong>Main Proposal:</strong> {proposal}</p>
-            <div>
-                <button className='buttonyellow' onClick={votingYes}>Yes</button>
-                <button className='buttonyellow' onClick={votingNo}>No</button>
-            </div>
-            <br />
-            <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
+            <button className='buttonyellow' onClick={votingYes}>Yes</button>
+            <button className='buttonyellow' onClick={votingNo}>No</button>
         </div>
-    )
+        <br />
+        <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
+    </div>
+  )
 }
 
 export default WAVote
