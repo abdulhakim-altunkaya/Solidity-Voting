@@ -9,15 +9,17 @@ import { useNavigate } from 'react-router-dom';
 
 function WADetails() {
     const navigate = useNavigate();
+    
 
     return (
         <div>
             <WAMainProposal/>
-            <WABecomeMember />
+            <button className='button-56' onClick={ () => navigate("/vote") }>Vote for Proposal</button>
+            <br />
+            <button className='button-56' onClick={ () => navigate("/member") }>Become Member</button>
+            <br />
             <WAMakeProposal/>
             <WAChooseMain/>
-            <br />
-            <button className='button-56' onClick={ () => navigate("/vote") }>Vote for Proposal</button>
             <WACloseVoting />
         </div>
     )

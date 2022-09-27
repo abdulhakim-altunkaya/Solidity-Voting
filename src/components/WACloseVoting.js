@@ -2,6 +2,7 @@ import React from 'react'
 import {ethers} from "ethers";
 import {ABI} from "./ContractABI";
 import {CONTRACT_ADDRESS} from "./ContractAddress";
+import { useState } from 'react';
 
 function WACloseVoting() {
     let contract;
@@ -17,21 +18,22 @@ function WACloseVoting() {
         contract = new ethers.Contract(Address, ABI, signer);
     }
 
+    let[inputValue, setInputValue] = useState("");
     const closeVotingSession = async () => {
         connectContract();
-        const txResponse = await contract.closeVoting(1);
+        const txResponse = await contract.closeVoting(inputValue);
         await txResponse.wait();
+        await contract.resetTable();
     }
 
-    const resetEverything = async () => {
-        connectContract();
-        const txResponse = await contract.resetTable();
-        await txResponse.wait();
-    }
+
   return (
-    <div>
+    <div style={{backgroundColor:"lightsalmon", paddingLeft: "5px"}}>
+        <br />
         <button className='button-56 redButton' onClick={closeVotingSession}> CLOSE VOTING (only Owner can click)</button>
-        <button className='button-56 redButton' onClick={resetEverything}> RESET TABLE FOR NEXT VOTING (only Owner can click)</button>
+        <input type="number" value={inputValue} 
+        onChange={e => setInputValue(e.target.value)} 
+        placeholder="enter an id number for closing proposal" />
     </div>
   )
 }

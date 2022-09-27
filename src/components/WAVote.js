@@ -29,28 +29,43 @@ function WAVote() {
     const getMain = async () => {
         connectContract();
         const txResponse = await contract.mainProposal();
-        setProposal(txResponse);
+        if(txResponse === "") {
+            setProposal("There is no proposal yet");
+        } else{
+            setProposal(txResponse);
+        }
     }
-
 
     //cast your vote
     const votingYes = async () => {
-        connectContract();
-        await contract.voteYes();
+        connectContract();   
+        const txResponse = await contract.mainProposal();
+        if(txResponse === "") {
+            alert("There is no proposal to vote for");
+        } else{
+            const txResponse = await contract.voteYes();
+            await txResponse.wait();
+        }
     }
     const votingNo = async () => {
         connectContract();
-        await contract.voteNo();
+        const txResponse = await contract.mainProposal();
+        if(txResponse === "") {
+            alert("There is no proposal to vote for");
+        } else{
+            const txResponse = await contract.voteNo();
+            await txResponse.wait();
+        }
     }
-
-
 
   return (
     <div>
         <button className='button-56' onClick={getMain}>See Main Proposal</button>
-        <p>Main Proposal: {proposal}</p>
-        <button className='button-56' onClick={votingYes}>Yes</button>
-        <button className='button-56' onClick={votingNo}>No</button>
+        <p> <strong>Main Proposal:</strong> {proposal}</p>
+        <div>
+            <button className='buttonyellow' onClick={votingYes}>Yes</button>
+            <button className='buttonyellow' onClick={votingNo}>No</button>
+        </div>
         <br />
         <button className='button-56' onClick={ () => navigate("/") }>Homepage</button>
     </div>

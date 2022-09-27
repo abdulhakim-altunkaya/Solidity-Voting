@@ -138,4 +138,14 @@ input {
   background-color: #dc143c;
 }
 
-
+.buttonyellow {
+  background-color: lightsalmon;
+  font-size: 33px;
+  padding: 5px;
+  font-family: Impact;
+  min-width: 20%;
+  margin-right: 5px;
+}
+.buttonyellow:hover {
+  background-color: yellow;
+}
