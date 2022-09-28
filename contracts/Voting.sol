@@ -102,7 +102,11 @@ contract Voting {
         uint totalV;
     }
     ResultStruct record;
-    mapping(uint => ResultStruct) public resultsMapping;
+    mapping(uint => ResultStruct) internal resultsMapping;
+
+    function getRecordStruct(uint id) external view returns(ResultStruct memory) {
+        return resultsMapping[id];
+    }
 
  
     //y: yes votes, n: no votes
