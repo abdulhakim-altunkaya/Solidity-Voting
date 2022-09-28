@@ -127,6 +127,47 @@ export const ABI =  [
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getRecordStruct",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "proposalName",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "yesV",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "noV",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalV",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Voting.ResultStruct",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "getVotingStatus",
     "outputs": [
@@ -241,40 +282,6 @@ export const ABI =  [
     "name": "resetTable",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "resultsMapping",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "proposalName",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "yesV",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "noV",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "totalV",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {

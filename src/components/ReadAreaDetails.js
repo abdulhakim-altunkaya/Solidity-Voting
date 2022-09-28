@@ -33,6 +33,8 @@ function ReadAreaDetails() {
       <button className='button-56' onClick={() => navigate('/passed')}>SEE PASSED PROPOSALS</button>
       <br />
       <button className='button-56' onClick={() => navigate('/rejected')}>SEE REJECTED PROPOSALS</button>
+      <br />
+      <button className='button-56' onClick={() => navigate("/details")}>PREVIOUS PROPOSALS DETAILS</button>
     </div>
   )
 }

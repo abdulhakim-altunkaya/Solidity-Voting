@@ -4,9 +4,8 @@ import ReadAreaDetails from './ReadAreaDetails';
 import ReadAreaRejected from './ReadAreaRejected';
 import ReadAreaPassed from "./ReadAreaPassed";
 import ReadAreaWaiting from "./ReadAreaWaiting";
-import { ABI } from "./ContractABI";
-import { ethers } from "ethers";
-import { CONTRACT_ADDRESS } from "./ContractAddress";
+import ReadAreaStruct from './ReadAreaStruct';
+
 
 function ReadArea() {
 
@@ -19,6 +18,7 @@ function ReadArea() {
               <Route path="/rejected" element={ <ReadAreaRejected /> }/>
               <Route path="/passed" element={ <ReadAreaPassed /> } />
               <Route path="/proposals" element={ <ReadAreaWaiting/> } />
+              <Route path="/details" element={ <ReadAreaStruct /> } />
             </Routes>
         </Router>
     </div>
