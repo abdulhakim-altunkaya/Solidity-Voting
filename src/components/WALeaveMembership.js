@@ -2,7 +2,6 @@ import React from 'react'
 import { ABI } from './ContractABI';
 import { CONTRACT_ADDRESS} from "./ContractAddress";
 import { ethers } from "ethers";
-import { useState } from "react";
 
 function WALeaveMembership() {
     let contract;
