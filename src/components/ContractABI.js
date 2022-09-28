@@ -1,4 +1,4 @@
-export const ABI =  [
+export const ABI = [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -211,25 +211,6 @@ export const ABI =  [
     "name": "makeProposal",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "membersProposal",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {

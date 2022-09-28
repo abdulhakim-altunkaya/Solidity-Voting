@@ -8,6 +8,10 @@ module.exports = {
     localganache: {
       url: process.env.PROVIDER_URL,
       accounts: [`0x${process.env.PRIVATE_KEY}`]
+    }, 
+    matic: {
+      url: process.env.PROVIDER_URL,
+      accounts: [`0x${process.env.PRIVATE_KEY}`]
     }
 
   }

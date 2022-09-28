@@ -32,7 +32,7 @@ function ReadAreaRejected() {
     const displayArray = async () => {
         await getArray();
         if(listProposals.length < 1) {
-            setContent("No proposal has been submitted")
+            setContent("No proposal has been rejected yet")
         } else {
             setContent(listProposals.map( word =>  <p key={word}> {word}</p> ) )
         }

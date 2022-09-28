@@ -3,7 +3,6 @@
 pragma solidity >= 0.8.1;
 
 contract Voting {
-    mapping(address => string) public  membersProposal;
     mapping(address => bool) public membershipStatus;
     address[] public activeMembers;
 
@@ -195,11 +194,4 @@ contract Voting {
         membershipStatus[_member] = false;
     }
 
-    /*
-    
-    catch error messages and display them
-    also event messages
-
-    check index number in closeVoting component
-    */
 }
